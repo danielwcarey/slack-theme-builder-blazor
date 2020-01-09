@@ -1,0 +1,25 @@
+﻿.theme-builder {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+}
+
+@media (min-width: 50em) {
+    .theme-builder {
+        grid-template-columns: auto 1fr;
+    }
+}
+
+.color-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+.ui-preview-svg {
+    width: 100%;
+}
+
+.slack-color-list {
+    word-wrap: break-word;
+}

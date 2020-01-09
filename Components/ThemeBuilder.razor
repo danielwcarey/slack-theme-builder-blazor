@@ -1,0 +1,68 @@
+﻿@using System.Drawing
+@using slack_theme_builder_blazor.Models
+<h2>Theme Builder</h2>
+<div class="theme-builder">
+    <form class="color-inputs">
+        <ColorInput InputLabel="Column BG"
+                    InputId="columnBG"
+                    Color=@Palette.ColumnBG />
+
+        <ColorInput InputLabel="Menu BG Hover"
+                    InputId="menuBGHover"
+                    Color=@Palette.MenuBGHover />
+
+        <ColorInput InputLabel="Active Item"
+                    InputId="activeItem"
+                    Color=@Palette.ActiveItem />
+
+        <ColorInput InputLabel="Active Item Text"
+                    InputId="activeItemText"
+                    Color=@Palette.ActiveItemText />
+
+        <ColorInput InputLabel="Hover Item"
+                    InputId="hoverItem"
+                    Color=@Palette.HoverItem />
+
+        <ColorInput InputLabel="Text Color"
+                    InputId="textColor"
+                    Color=@Palette.TextColor />
+
+        <ColorInput InputLabel="Active Presence"
+                    InputId="activePresence"
+                    Color=@Palette.ActivePresence />
+
+        <ColorInput InputLabel="Mention Badge"
+                    InputId="mentionBadge"
+                    Color=@(Palette.MentionBadge) />
+    </form>
+    <div class="ui-preview-svg">
+        <UIPreviewSVG Palette=@Palette/>
+    </div>
+</div>
+
+<div>
+    <h2>Paste These Into Slack</h2>
+    <p class="slack-color-list">@PaletteText</p>
+</div>
+
+@code {
+    public ColorPalette Palette = ColorPalettes.Aubergine;
+
+    private string PaletteText { get; set; }
+
+    protected override void OnInitialized() {
+        Update();
+
+        Palette.PropertyChanged += (sender, args) => {
+            Update();
+            
+        };
+    }
+
+    private void Update() {
+        PaletteText = Palette.ToString();
+        StateHasChanged();
+    }
+
+
+}

@@ -1,0 +1,39 @@
+﻿.color-input {
+}
+
+.color-input-label {
+    display: block;
+    margin-bottom: 0.5em;
+}
+
+.color-input-wrapper {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    overflow: hidden;
+    border-radius: 0.25rem;
+    border: 1px solid #333;
+}
+
+.color-text-input {
+    margin: 0;
+    border: none;
+    width: 100%;
+}
+
+.color-picker-input {
+    position: absolute !important;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+    white-space: nowrap; /* added line */
+}
+
+.custom-color-picker-input {
+    background: var(--background-color);
+    height: 1em;
+    width: 1em;
+    font-size: 2.5rem;
+    border-right: 1px solid #333;
+}
