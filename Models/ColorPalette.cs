@@ -32,16 +32,27 @@ namespace slack_theme_builder_blazor.Models {
         private Color _mentionBadge;
         public Color MentionBadge { get => _mentionBadge; set => SetProperty(value, ref _mentionBadge); }
 
-        public override string ToString() => string.Join(',', 
-            ColorTranslator.ToHtml(ColumnBG),
-            ColorTranslator.ToHtml(MenuBGHover),
-            ColorTranslator.ToHtml(ActiveItem),
-            ColorTranslator.ToHtml(ActiveItemText),
-            ColorTranslator.ToHtml(HoverItem),
-            ColorTranslator.ToHtml(TextColor),
-            ColorTranslator.ToHtml(ActivePresence),
-            ColorTranslator.ToHtml(MentionBadge)
-        );
+        //public override string ToString() => string.Join(',', 
+        //    ColorTranslator.ToHtml(ColumnBG),
+        //    ColorTranslator.ToHtml(MenuBGHover),
+        //    ColorTranslator.ToHtml(ActiveItem),
+        //    ColorTranslator.ToHtml(ActiveItemText),
+        //    ColorTranslator.ToHtml(HoverItem),
+        //    ColorTranslator.ToHtml(TextColor),
+        //    ColorTranslator.ToHtml(ActivePresence),
+        //    ColorTranslator.ToHtml(MentionBadge)
+        //);
+
+        public string Text => string.Join(',',
+                ColorTranslator.ToHtml(ColumnBG),
+                ColorTranslator.ToHtml(MenuBGHover),
+                ColorTranslator.ToHtml(ActiveItem),
+                ColorTranslator.ToHtml(ActiveItemText),
+                ColorTranslator.ToHtml(HoverItem),
+                ColorTranslator.ToHtml(TextColor),
+                ColorTranslator.ToHtml(ActivePresence),
+                ColorTranslator.ToHtml(MentionBadge)
+            );
 
 
         #region INotifyPropertyChanged
@@ -50,7 +61,7 @@ namespace slack_theme_builder_blazor.Models {
         protected void SetProperty<T>(T value, ref T field, [System.Runtime.CompilerServices.CallerMemberName] string propertyName = "") {
             if (!Equals(field, value)) {
                 field = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+                //PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
             }
         }
         #endregion

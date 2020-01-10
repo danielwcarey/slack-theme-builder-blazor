@@ -4,19 +4,29 @@
         @InputLabel
     </label>
     <div class="color-input-wrapper">
+        @*<input class="color-picker-input"
+        type="color"
+        id=@InputIdColorPicker
+        @bind="@Color"/>*@
         <input class="color-picker-input"
                type="color"
                id=@InputIdColorPicker
-               @bind-value=@ColorHex />
+               value="@Color"
+               @onchange="DoColorChangeEvent" />
         <label class="custom-color-picker-input"
                for=@InputIdColorPicker
-               data-color=@ColorHex
+               data-color=@Color
                style=" --background-color: @ColorHex" />
+        @*<input class="color-text-input"
+        id=@InputId
+        type="text"
+        name=@InputId
+        @bind="@Color" />*@
         <input class="color-text-input"
                id=@InputId
                type="text"
-               name=@InputId
-               @bind-value=@ColorHex />
+               value="@ColorHex"
+               @onchange="DoColorChangeEvent" />
     </div>
 </div>
 
@@ -30,7 +40,25 @@
     [Parameter]
     public Color Color { get; set; }
 
+    [Parameter]
+    public EventCallback<Color> ColorChanged { get; set; }
+
+    private void DoColorChange() {
+        if (ColorChanged.HasDelegate) ColorChanged.InvokeAsync(Color);
+    }
+
+    // Workaround for 
+    // [Two way binding does not yet handle color picker...](https://github.com/dotnet/aspnetcore/issues/10376)
+    private void DoColorChangeEvent(ChangeEventArgs args) {
+        Color = ColorTranslator.FromHtml(args.Value as string);
+        DoColorChange();
+    }
+
     private string InputIdColorPicker { get => $"{InputId}ColorPicker"; }
-    private string ColorHex { get => ColorTranslator.ToHtml(Color); set => Color = ColorTranslator.FromHtml(value); }
+
+    private string ColorHex {
+        get => ColorTranslator.ToHtml(Color);
+        set => Color = ColorTranslator.FromHtml(value);
+    }
 
 }
