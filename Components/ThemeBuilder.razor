@@ -15,6 +15,10 @@
     <div class="ui-preview-svg">
         <UIPreviewSVG Palette=@Palette/>
     </div>
+    <div>
+        <button @onclick='@( () => SelectPalette("Aubergine") )'>Aubergine</button>
+        <button @onclick='@( () => SelectPalette("Nocturne") )'>Nocturne</button>
+    </div>
 </div>
 
 <div>
@@ -23,19 +27,16 @@
 </div>
 
 @code {
-    public readonly ColorPalette Palette = ColorPalettes.Aubergine;
+    public ColorPalette Palette = new ColorPalette();
 
-    //private string PaletteText { get; set; }
-
-    protected override void OnInitialized() {
-        //PaletteText = Palette.ToString();
-
-        Palette.PropertyChanged += (sender, args) => {
-            //System.Diagnostics.Debugger.Break();
-            //PaletteText = Palette.ToString();
-            
+    public void SelectPalette(string paletteName) {
+        Palette = paletteName switch
+        {
+            "Aubergine" => new ColorPalette(ColorPalettes.Aubergine),
+            "Nocturne" => new ColorPalette(ColorPalettes.Nocturne),
+            _ => new ColorPalette() 
         };
-    }
 
+    }
 
 }
