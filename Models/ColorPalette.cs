@@ -10,7 +10,6 @@ namespace slack_theme_builder_blazor.Models {
     public class ColorPalette {
 
         public ColorPalette() {
-
         }
 
         public ColorPalette(ColorPalette palette) {
@@ -24,14 +23,17 @@ namespace slack_theme_builder_blazor.Models {
             MentionBadge = palette.MentionBadge;
         }
 
-        public Color ColumnBG { get; set; } = Color.Olive;
-        public Color MenuBGHover { get; set; } = Color.Blue;
-        public Color ActiveItem { get; set; } = Color.DarkKhaki;
-        public Color ActiveItemText { get; set; } = Color.DarkSeaGreen;
-        public Color HoverItem { get; set; } = Color.LightSeaGreen;
-        public Color TextColor { get; set; } = Color.AliceBlue;
-        public Color ActivePresence { get; set; } = Color.YellowGreen;
-        public Color MentionBadge { get; set; } = Color.LightYellow;
+        // Returns a Color struct whose IsKnownColor, IsNamedColor and IsSystemColor are false
+        private static Color FromKnownName(Color source) => Color.FromArgb(source.R, source.G, source.B);
+
+        public Color ColumnBG { get; set; } = FromKnownName(Color.Olive);
+        public Color MenuBGHover { get; set; } = FromKnownName(Color.Blue);
+        public Color ActiveItem { get; set; } = FromKnownName(Color.DarkKhaki);
+        public Color ActiveItemText { get; set; } = FromKnownName(Color.DarkSeaGreen);
+        public Color HoverItem { get; set; } = FromKnownName(Color.LightSeaGreen);
+        public Color TextColor { get; set; } = FromKnownName(Color.AliceBlue);
+        public Color ActivePresence { get; set; } = FromKnownName(Color.YellowGreen);
+        public Color MentionBadge { get; set; } = FromKnownName(Color.LightYellow);
 
         public string Text => string.Join(',',
                 ColorTranslator.ToHtml(ColumnBG),
