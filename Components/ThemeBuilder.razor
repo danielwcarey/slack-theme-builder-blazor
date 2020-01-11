@@ -16,8 +16,8 @@
         <UIPreviewSVG Palette=@Palette/>
     </div>
     <div>
-        <button @onclick='@( () => SelectPalette("Aubergine") )'>Aubergine</button>
-        <button @onclick='@( () => SelectPalette("Nocturne") )'>Nocturne</button>
+        <button @onclick='@( () => SelectPalette(ColorPalettes.Aubergine) )'>Aubergine</button>
+        <button @onclick='@( () => SelectPalette(ColorPalettes.Nocturne) )'>Nocturne</button>
     </div>
 </div>
 
@@ -29,14 +29,8 @@
 @code {
     public ColorPalette Palette = new ColorPalette();
 
-    public void SelectPalette(string paletteName) {
-        Palette = paletteName switch
-        {
-            "Aubergine" => new ColorPalette(ColorPalettes.Aubergine),
-            "Nocturne" => new ColorPalette(ColorPalettes.Nocturne),
-            _ => new ColorPalette() 
-        };
-
+    public void SelectPalette(ColorPalette palette) {
+        Palette = new ColorPalette(palette);
     }
 
 }
