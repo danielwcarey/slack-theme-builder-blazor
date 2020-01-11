@@ -1,5 +1,6 @@
 ﻿@using System.Drawing
 @using slack_theme_builder_blazor.Models
+@inject NavigationManager  NavigationManager
 <h2>Theme Builder</h2>
 <div class="theme-builder">
     <form class="color-inputs">
@@ -27,10 +28,21 @@
 </div>
 
 @code {
-    public ColorPalette Palette = new ColorPalette();
+
+    private ColorPalette _palette = new ColorPalette();
+
+    [Parameter]
+    public ColorPalette Palette {
+        get => _palette;
+        set {
+            _palette = value;
+            _palette.PropertyChanged += (obj, args) => NavigationManager.NavigateTo($@"/{_palette.UrlEncoded}");
+        }
+    }
 
     public void SelectPalette(ColorPalette palette) {
-        Palette = new ColorPalette(palette);
+        NavigationManager.NavigateTo($@"/{palette.UrlEncoded}");
     }
+
 
 }

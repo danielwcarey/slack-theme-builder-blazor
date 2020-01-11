@@ -1,4 +1,11 @@
 ﻿@page "/"
-
+@page "/{ColorCsv}"
+@using Models
 <h1>Slack Theme Builder</h1>
-<ThemeBuilder/>
+<ThemeBuilder Palette="@(new ColorPalette(ColorCsv))"/>
+
+@code {
+    [Parameter]
+    public string ColorCsv { get; set; }
+
+}

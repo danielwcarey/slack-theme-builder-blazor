@@ -34,3 +34,5 @@ Blazor currently doesn't support css isloation;i.e. per component styles. It is 
 [ASP.NET Core Blazor state management]( https://docs.microsoft.com/en-us/aspnet/core/blazor/state-management?view=aspnetcore-3.1 )
 
 [A Detailed Look at Data Binding in Blazor]( https://chrissainty.com/a-detailed-look-at-data-binding-in-blazor/ )
+
+[ASP.NET Core Blazor routing]( https://docs.microsoft.com/en-us/aspnet/core/blazor/routing?view=aspnetcore-3.1 )
