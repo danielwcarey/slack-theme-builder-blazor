@@ -28,21 +28,36 @@
     [Parameter]
     public string InputId { get; set; } = "";
 
+    
+    private Color _color;
     [Parameter]
-    public Color Color { get; set; }
+    public Color Color { get => _color; set => _color = value; }
+
+    private Color _initialColor { get; set; }
 
     [Parameter]
     public EventCallback<Color> ColorChanged { get; set; }
+
+    protected override void OnInitialized() {
+        _initialColor = Color;
+    }
+
 
     private void DoColorChange() {
         if (ColorChanged.HasDelegate) ColorChanged.InvokeAsync(Color);
     }
 
-    // Workaround for 
+    // Workaround for
     // [Two way binding does not yet handle color picker...](https://github.com/dotnet/aspnetcore/issues/10376)
     private void DoColorChangeEvent(ChangeEventArgs args) {
-        Color = ColorTranslator.FromHtml(args.Value as string);
-        DoColorChange();
+        try {
+            Color = ColorTranslator.FromHtml(args.Value as string);
+            DoColorChange();
+        } catch (System.ArgumentException exc) {
+            
+            // todo: Need to provide feedback as to why it failed and revert
+            ColorHex = "#000000";
+        }
     }
 
     private string InputIdColorPicker { get => $"{InputId}ColorPicker"; }

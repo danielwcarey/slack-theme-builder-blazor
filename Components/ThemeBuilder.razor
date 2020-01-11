@@ -26,6 +26,14 @@
     <h2>Paste These Into Slack</h2>
     <p class="slack-color-list">@Palette.Text</p>
 </div>
+@if (Palette.Errors.Any()) {
+<div>
+    <h2>Errors Parsing Url</h2>
+    @foreach (string error in Palette.Errors) {
+        <p>@error</p>
+    }
+</div>
+}
 
 @code {
 

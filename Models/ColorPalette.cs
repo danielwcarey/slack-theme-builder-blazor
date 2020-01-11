@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Drawing;
 using System.ComponentModel;
+using System.Text;
 
 namespace slack_theme_builder_blazor.Models {
 
@@ -27,6 +28,21 @@ namespace slack_theme_builder_blazor.Models {
         }
 
         // Index the palette colors.
+        public static string IndexName(int index) => index switch
+        {
+            0 => "ColumnBG",
+            1 => "MenuBGHover",
+            2 => "ActiveItem",
+            3 => "ActiveItemText",
+            4 => "HoverItem",
+            5 => "TextColor",
+            6 => "ActivePresence",
+            7 => "MentionBadge",
+            _ => "",
+        };
+
+
+
         public Color this[int index] {
             get {
                 return index switch
@@ -103,12 +119,28 @@ namespace slack_theme_builder_blazor.Models {
         public void Parse(string colorCsv) {
             if (string.IsNullOrWhiteSpace(colorCsv)) return;
 
+            _errors.Clear();
+            var errorMessages = new List<string>();
+
             var colorValues = colorCsv.Split(new char[] { ';', ',' });
 
             for (int index = 0; index < colorValues.Length; index++) {
-                this[index] = ColorTranslator.FromHtml(colorValues[index]);
+                try {
+                    this[index] = ColorTranslator.FromHtml(colorValues[index]);
+                }catch(System.ArgumentException exc) {
+                    errorMessages.Add($"{ColorPalette.IndexName(index)}: {exc.Message}");
+                }
+            }
+            if (errorMessages.Any()) {
+                Errors.AddRange(errorMessages);
+                if (OnParseError != null) OnParseError.Invoke(this, errorMessages);
             }
         }
+
+        private List<string> _errors = new List<string>();
+        public List<string> Errors => _errors;
+
+        public EventHandler<List<string>> OnParseError { get; set; }
 
         #region INotifyPropertyChanged
         public event PropertyChangedEventHandler PropertyChanged;
