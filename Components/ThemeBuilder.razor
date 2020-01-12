@@ -14,10 +14,10 @@
         <ColorInput InputLabel="Mention Badge" InputId="mentionBadge" @bind-Color=@Palette.MentionBadge />
     </form>
     <div class="ui-preview-svg">
-        @*<UIPreviewSVG Palette=@Palette @bind-SelectedPart=@SelectedPart/>*@
         <UIPreviewSVG Palette=@Palette />
     </div>
     <div>
+        <button @onclick='@( () => SelectPalette(ColorPalettes.Default) )'>Default</button>
         <button @onclick='@( () => SelectPalette(ColorPalettes.Aubergine) )'>Aubergine</button>
         <button @onclick='@( () => SelectPalette(ColorPalettes.Nocturne) )'>Nocturne</button>
     </div>

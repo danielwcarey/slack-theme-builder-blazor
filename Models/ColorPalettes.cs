@@ -9,6 +9,8 @@ namespace slack_theme_builder_blazor.Models {
 
         private static Color HexColor(string hex) => ColorTranslator.FromHtml(hex);
 
+        public static ColorPalette Default = new ColorPalette();
+
         public static ColorPalette Aubergine = new ColorPalette() {
             ColumnBG = HexColor("#3F0E40"),
             MenuBGHover = HexColor("#350d36"),
