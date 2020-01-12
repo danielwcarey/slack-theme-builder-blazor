@@ -1,15 +1,25 @@
 ﻿@using System.Drawing
 @using slack_theme_builder_blazor.Models
+<div><span style="font-weight:bold">&nbsp;@MouesOverMessage</span></div> @*todo: Need to style*@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 111.7 81.39">
 
     <path data-id="column-BG"
+          @onmouseover='@(() => MouesOverMessage = "ColumnBG"  )'
+          @onmouseout='@(() => MouesOverMessage = ""  )'
+          @onclick='@(() => SelectedPart = ColorPalettePart.ColumnBG)'
           fill=@ColorHex(Palette.ColumnBG)
           d="M0,23.46H111.7a0,0,0,0,1,0,0V79.12a2.27,2.27,0,0,1-2.27,2.27H2.27A2.27,2.27,0,0,1,0,79.12V23.46A0,0,0,0,1,0,23.46Z" />
     <path data-id="menu-BG-Hover"
+          @onmouseover='@(() => MouesOverMessage = "MenuBGHover"  )'
+          @onmouseout='@(() => MouesOverMessage = ""  )'
+          @onclick='@(() => SelectedPart = ColorPalettePart.MenuBGHover)'
           fill=@ColorHex(Palette.MenuBGHover)
           style="transform: translateY(1%);"
           d="M2,0H109.7a2,2,0,0,1,2,2V23.46a0,0,0,0,1,0,0H0a0,0,0,0,1,0,0V2A2,2,0,0,1,2,0Z" />
     <rect data-id="R-00-name"
+          @onmouseover='@(() => MouesOverMessage = "TextColor"  )'
+          @onmouseout='@(() => MouesOverMessage = ""  )'
+          @onclick='@(() => SelectedPart = ColorPalettePart.TextColor)'
           fill=@ColorHex(Palette.TextColor)
           x="18.14"
           y="71.36"
@@ -17,14 +27,23 @@
           height="4.55"
           rx="2.27" />
     <path data-id="R-05-_"
+          @onmouseover='@(() => MouesOverMessage = "TextColor"  )'
+          @onmouseout='@(() => MouesOverMessage = ""  )'
+          @onclick='@(() => SelectedPart = ColorPalettePart.TextColor)'
           fill=@ColorHex(Palette.TextColor)
           d="M12,73.91l-.14,1h-.83l-.23,1.48H9.74L10,74.86H9.29l-.24,1.48H8l.24-1.48H7.39l.15-1h.82l.11-.67H7.65l.15-.95h.82l.22-1.37H9.91l-.22,1.37h.69l.22-1.37h1.08l-.22,1.37h.81l-.14.95h-.82l-.1.67Zm-1.8-.67H9.54l-.11.67h.7Z" />
     <rect data-id="R-04-active-item"
+          @onmouseover='@(() => MouesOverMessage = "ActiveItem"  )'
+          @onmouseout='@(() => MouesOverMessage = ""  )'
+          @onclick='@(() => SelectedPart = ColorPalettePart.ActiveItem)'
           fill=@ColorHex(Palette.ActiveItem)
           y="58.23"
           width="111.7"
           height="8.91" />
     <rect data-id="R-04-name"
+          @onmouseover='@(() => MouesOverMessage = "ActiveItemText"  )'
+          @onmouseout='@(() => MouesOverMessage = ""  )'
+          @onclick='@(() => SelectedPart = ColorPalettePart.ActiveItemText)'
           fill=@ColorHex(Palette.ActiveItemText)
           x="18.14"
           y="60.46"
@@ -32,9 +51,15 @@
           height="4.55"
           rx="2.27" />
     <path data-id="R-04-_"
+          @onmouseover='@(() => MouesOverMessage = "ActiveItemText"  )'
+          @onmouseout='@(() => MouesOverMessage = ""  )'
+          @onclick='@(() => SelectedPart = ColorPalettePart.ActiveItemText)'
           fill=@ColorHex(Palette.ActiveItemText)
           d="M12,62.69l-.14,1h-.83l-.23,1.48H9.74L10,63.64H9.29l-.24,1.48H8l.24-1.48H7.39l.15-1h.82L8.47,62H7.65l.15-.94h.82l.22-1.38H9.91l-.22,1.38h.69l.22-1.38h1.08l-.22,1.38h.81l-.14.94h-.82l-.1.68ZM10.23,62H9.54l-.11.68h.7Z" />
     <rect data-id="R-03-name"
+          @onmouseover='@(() => MouesOverMessage = "TextColor"  )'
+          @onmouseout='@(() => MouesOverMessage = ""  )'
+          @onclick='@(() => SelectedPart = ColorPalettePart.TextColor)'
           fill=@ColorHex(Palette.TextColor)
           x="18.04"
           y="49.56"
@@ -42,16 +67,25 @@
           height="4.55"
           rx="2.27" />
     <circle data-id="R-03active-presense"
+            @onmouseover='@(() => MouesOverMessage = "ActivePresence"  )'
+            @onmouseout='@(() => MouesOverMessage = ""  )'
+            @onclick='@(() => SelectedPart = ColorPalettePart.ActivePresence)'
             fill=@ColorHex(Palette.ActivePresence)
             cx="9.67"
             cy="51.62"
             r="2.27" />
     <rect data-id="R-02-hover-item"
+          @onmouseover='@(() => MouesOverMessage = "HoverItem"  )'
+          @onmouseout='@(() => MouesOverMessage = ""  )'
+          @onclick='@(() => SelectedPart = ColorPalettePart.HoverItem)'
           fill=@ColorHex(Palette.HoverItem)
           y="36.38"
           width="111.7"
           height="8.91" />
     <rect data-id="R-02-name"
+          @onmouseover='@(() => MouesOverMessage = "TextColor"  )'
+          @onmouseout='@(() => MouesOverMessage = ""  )'
+          @onclick='@(() => SelectedPart = ColorPalettePart.TextColor)'
           fill=@ColorHex(Palette.TextColor)
           x="18.14"
           y="38.67"
@@ -59,9 +93,15 @@
           height="4.55"
           rx="2.27" />
     <path data-id="R-02-_"
+          @onmouseover='@(() => MouesOverMessage = "TextColor"  )'
+          @onmouseout='@(() => MouesOverMessage = ""  )'
+          @onclick='@(() => SelectedPart = ColorPalettePart.TextColor)'
           fill=@ColorHex(Palette.TextColor)
           d="M12,41.11l-.14,1h-.83l-.23,1.48H9.74L10,42.06H9.29l-.24,1.48H8l.24-1.48H7.39l.15-1h.82l.11-.67H7.65l.15-.95h.82l.22-1.37H9.91l-.22,1.37h.69l.22-1.37h1.08l-.22,1.37h.81l-.14.95h-.82l-.1.67Zm-1.8-.67H9.54l-.11.67h.7Z" />
     <rect data-id="R-01-name"
+          @onmouseover='@(() => MouesOverMessage = "TextColor"  )'
+          @onmouseout='@(() => MouesOverMessage = ""  )'
+          @onclick='@(() => SelectedPart = ColorPalettePart.TextColor)'
           fill=@ColorHex(Palette.TextColor)
           x="18.14"
           y="27.77"
@@ -69,9 +109,15 @@
           height="4.55"
           rx="2.27" />
     <path data-id="R-01-_"
+          @onmouseover='@(() => MouesOverMessage = "TextColor"  )'
+          @onmouseout='@(() => MouesOverMessage = ""  )'
+          @onclick='@(() => SelectedPart = ColorPalettePart.TextColor)'
           fill=@ColorHex(Palette.TextColor)
           d="M12,30.32l-.14.95h-.83l-.23,1.49H9.74L10,31.27H9.29l-.24,1.49H8l.24-1.49H7.39l.15-.95h.82l.11-.67H7.65l.15-.94h.82l.22-1.38H9.91l-.22,1.38h.69l.22-1.38h1.08l-.22,1.38h.81l-.14.94h-.82l-.1.67Zm-1.8-.67H9.54l-.11.67h.7Z" />
     <rect data-id="active-badge"
+          @onmouseover='@(() => MouesOverMessage = "MentionBadge"  )'
+          @onmouseout='@(() => MouesOverMessage = ""  )'
+          @onclick='@(() => SelectedPart = ColorPalettePart.MentionBadge)'
           fill=@ColorHex(Palette.MentionBadge)
           x="92.42"
           y="26.26"
@@ -79,6 +125,9 @@
           height="6.77"
           rx="3.39" />
     <rect data-id="user-name"
+          @onmouseover='@(() => MouesOverMessage = "TextColor"  )'
+          @onmouseout='@(() => MouesOverMessage = ""  )'
+          @onclick='@(() => SelectedPart = ColorPalettePart.TextColor)'
           fill=@ColorHex(Palette.TextColor)
           x="7.34"
           y="15.92"
@@ -86,6 +135,9 @@
           height="4.55"
           rx="2.27" />
     <rect data-id="slack-team"
+          @onmouseover='@(() => MouesOverMessage = "TextColor"  )'
+          @onmouseout='@(() => MouesOverMessage = ""  )'
+          @onclick='@(() => SelectedPart = ColorPalettePart.TextColor)'
           fill=@ColorHex(Palette.TextColor)
           x="7.34"
           y="3.92"
@@ -93,11 +145,26 @@
           height="8.58"
           rx="2.27" />
 </svg>
-
+<div>@SelectedPart</div>
 @code {
 
     [Parameter]
     public ColorPalette Palette { get; set; }
-    
+
+    private ColorPalettePart _selectedPart;
+    [Parameter]
+    public ColorPalettePart SelectedPart {
+        get => _selectedPart;
+        set {
+            _selectedPart = value;
+            if (SelectedPartChanged.HasDelegate) SelectedPartChanged.InvokeAsync(_selectedPart);
+        }
+    }
+    [Parameter]
+    public EventCallback<ColorPalettePart> SelectedPartChanged { get; set; }
+
+
     private string ColorHex(Color color) => ColorTranslator.ToHtml(color);
+
+    private string MouesOverMessage { get; set; } = "";
 }

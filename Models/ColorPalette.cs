@@ -41,8 +41,6 @@ namespace slack_theme_builder_blazor.Models {
             _ => "",
         };
 
-
-
         public Color this[int index] {
             get {
                 return index switch
@@ -68,6 +66,35 @@ namespace slack_theme_builder_blazor.Models {
                     case 5: TextColor = FromKnownName(value); break;
                     case 6: ActivePresence = FromKnownName(value); break;
                     case 7: MentionBadge = FromKnownName(value); break;
+                    default: break;
+                }
+            }
+        }
+
+        public Color this[ColorPalettePart index] {
+            get {
+                return index switch
+                {
+                    ColorPalettePart.ColumnBG => ColumnBG,
+                    ColorPalettePart.MenuBGHover => MenuBGHover,
+                    ColorPalettePart.ActiveItem => ActiveItem,
+                    ColorPalettePart.ActiveItemText => ActiveItemText,
+                    ColorPalettePart.HoverItem => HoverItem,
+                    ColorPalettePart.TextColor => TextColor,
+                    ColorPalettePart.ActivePresence => ActivePresence,
+                    ColorPalettePart.MentionBadge => MentionBadge,
+                    _ => FromKnownName(Color.Black),
+                };
+            }
+            set {
+                switch (index) {
+                    case ColorPalettePart.ColumnBG: ColumnBG = FromKnownName(value); break;
+                    case ColorPalettePart.ActiveItem: ActiveItem = FromKnownName(value); break;
+                    case ColorPalettePart.ActiveItemText: ActiveItemText = FromKnownName(value); break;
+                    case ColorPalettePart.HoverItem: HoverItem = FromKnownName(value); break;
+                    case ColorPalettePart.TextColor: TextColor = FromKnownName(value); break;
+                    case ColorPalettePart.ActivePresence: ActivePresence = FromKnownName(value); break;
+                    case ColorPalettePart.MentionBadge: MentionBadge = FromKnownName(value); break;
                     default: break;
                 }
             }

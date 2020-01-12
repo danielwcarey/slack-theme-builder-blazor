@@ -14,7 +14,8 @@
         <ColorInput InputLabel="Mention Badge" InputId="mentionBadge" @bind-Color=@Palette.MentionBadge />
     </form>
     <div class="ui-preview-svg">
-        <UIPreviewSVG Palette=@Palette/>
+        @*<UIPreviewSVG Palette=@Palette @bind-SelectedPart=@SelectedPart/>*@
+        <UIPreviewSVG Palette=@Palette />
     </div>
     <div>
         <button @onclick='@( () => SelectPalette(ColorPalettes.Aubergine) )'>Aubergine</button>
@@ -38,7 +39,6 @@
 @code {
 
     private ColorPalette _palette = new ColorPalette();
-
     [Parameter]
     public ColorPalette Palette {
         get => _palette;
@@ -51,6 +51,5 @@
     public void SelectPalette(ColorPalette palette) {
         NavigationManager.NavigateTo($@"/{palette.UrlEncoded}");
     }
-
 
 }
